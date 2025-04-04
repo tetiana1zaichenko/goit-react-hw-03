@@ -1,16 +1,20 @@
 import { FaUser } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
-const ContactList = ({ name, number }) => {
+const ContactList = ({ contacts }) => {
   return (
-    <div>
-      <p>
-        <FaUser /> {name}
-      </p>
-      <p>
-        <FaPhoneAlt /> {number}
-      </p>
-      <button>Delete</button>
-    </div>
+    <ul>
+      {contacts.map(({ id, name, number }) => (
+        <li key={id}>
+          <p>
+            <FaUser /> {name}
+          </p>
+          <p>
+            <FaPhoneAlt /> {number}
+          </p>
+          <button>Delete</button>
+        </li>
+      ))}
+    </ul>
   );
 };
 

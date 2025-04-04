@@ -11,14 +11,24 @@ const App = () => {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ]);
 
+  const [inputValue, setInputValue] = useState("");
+  const handleChange = (evt) => {
+    setInputValue(evt.target.value);
+  };
+  console.log("inputValue", inputValue);
+
+  const filteredContacts = inputValue
+    ? contacts.filter(({ name }) =>
+        name.toLowerCase().includes(inputValue.toLowerCase())
+      )
+    : contacts;
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm contacts={contacts} onClick={setContacts}></ContactForm>
-      <SearchBox></SearchBox>
-      <ContactList>
-        contacts={contacts} onClick={setContacts}
-      </ContactList>
+      <ContactForm contacts={contacts} onClick={setContacts} />
+      <SearchBox value={inputValue} onChange={handleChange} />
+      <ContactList onClick={setContacts} contacts={filteredContacts} />
     </div>
   );
 };
