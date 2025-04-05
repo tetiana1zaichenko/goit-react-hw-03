@@ -21,7 +21,7 @@ const initialValues = {
   number: "",
 };
 
-const ContactForm = () => {
+const ContactForm = ({ onClick }) => {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
@@ -31,28 +31,31 @@ const ContactForm = () => {
       id: nanoid(),
     };
     console.log(newContact);
+    onClick(newContact);
     actions.resetForm();
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
-      <Form>
-        <div>
-          <label htmlFor={nameFieldId}>Name</label>
-          <Field type="text" name="name" id={nameFieldId} />
-          <ErrorMessage name="name" component="span" />
-        </div>
-        <div>
-          <label htmlFor={numberFieldId}>Number</label>
-          <Field type="number" name="number" id={numberFieldId} />
-          <ErrorMessage name="number" component="span" />
-        </div>
-        <button type="submit">Add contact</button>
-      </Form>
-    </Formik>
+    <div>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={FeedbackSchema}
+      >
+        <Form>
+          <div>
+            <label htmlFor={nameFieldId}>Name</label>
+            <Field type="text" name="name" id={nameFieldId} />
+            <ErrorMessage name="name" component="span" />
+          </div>
+          <div>
+            <label htmlFor={numberFieldId}>Number</label>
+            <Field type="tel" name="number" id={numberFieldId} />
+            <ErrorMessage name="number" component="span" />
+          </div>
+          <button type="submit">Add contact</button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

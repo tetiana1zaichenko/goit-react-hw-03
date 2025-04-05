@@ -23,10 +23,15 @@ const App = () => {
       )
     : contacts;
 
+  // спросить за эти строчки
+  const addContact = (newContact) => {
+    setContacts([...contacts, newContact]);
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm contacts={contacts} onClick={setContacts} />
+      <ContactForm contacts={contacts} onClick={addContact} />
       <SearchBox value={inputValue} onChange={handleChange} />
       <ContactList onClick={setContacts} contacts={filteredContacts} />
     </div>
