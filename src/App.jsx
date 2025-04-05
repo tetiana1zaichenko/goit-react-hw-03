@@ -15,7 +15,6 @@ const App = () => {
   const handleChange = (evt) => {
     setInputValue(evt.target.value);
   };
-  console.log("inputValue", inputValue);
 
   const filteredContacts = inputValue
     ? contacts.filter(({ name }) =>
@@ -23,9 +22,14 @@ const App = () => {
       )
     : contacts;
 
-  // спросить за эти строчки
+  // спросить за эти строчки как сюда попадает новый контакт?
   const addContact = (newContact) => {
     setContacts([...contacts, newContact]);
+  };
+
+  const deleteContact = (id) => {
+    const newDate = contacts.filter((item) => item.id !== id);
+    setContacts(newDate);
   };
 
   return (
@@ -33,7 +37,7 @@ const App = () => {
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} onClick={addContact} />
       <SearchBox value={inputValue} onChange={handleChange} />
-      <ContactList onClick={setContacts} contacts={filteredContacts} />
+      <ContactList onClick={deleteContact} contacts={filteredContacts} />
     </div>
   );
 };

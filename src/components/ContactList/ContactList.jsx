@@ -1,6 +1,6 @@
 import { FaUser } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onClick }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => (
@@ -11,7 +11,7 @@ const ContactList = ({ contacts }) => {
           <p>
             <FaPhoneAlt /> {number}
           </p>
-          <button>Delete</button>
+          <button onClick={() => onClick(id)}>Delete</button>
         </li>
       ))}
     </ul>
