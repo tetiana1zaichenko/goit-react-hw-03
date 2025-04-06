@@ -42,7 +42,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} onClick={addContact} />
       <SearchBox value={inputValue} onChange={handleChange} />

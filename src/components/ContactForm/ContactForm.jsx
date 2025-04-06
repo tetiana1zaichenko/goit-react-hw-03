@@ -4,6 +4,7 @@ import { useId } from "react";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
+import s from "./ContactForm.module.css";
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -35,24 +36,40 @@ const ContactForm = ({ onClick }) => {
     actions.resetForm();
   };
   return (
-    <div>
+    <div className={s.formWrapper}>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={FeedbackSchema}
       >
-        <Form>
+        <Form className={s.form}>
           <div>
-            <label htmlFor={nameFieldId}>Name</label>
-            <Field type="text" name="name" id={nameFieldId} />
+            <label className={s.label} htmlFor={nameFieldId}>
+              Name
+            </label>
+            <Field
+              className={s.input}
+              type="text"
+              name="name"
+              id={nameFieldId}
+            />
             <ErrorMessage name="name" component="span" />
           </div>
           <div>
-            <label htmlFor={numberFieldId}>Number</label>
-            <Field type="tel" name="number" id={numberFieldId} />
+            <label className={s.label} htmlFor={numberFieldId}>
+              Number
+            </label>
+            <Field
+              className={s.input}
+              type="tel"
+              name="number"
+              id={numberFieldId}
+            />
             <ErrorMessage name="number" component="span" />
           </div>
-          <button type="submit">Add contact</button>
+          <button className={s.button} type="submit">
+            Add contact
+          </button>
         </Form>
       </Formik>
     </div>
