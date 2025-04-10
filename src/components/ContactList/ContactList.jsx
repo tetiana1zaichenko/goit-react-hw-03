@@ -12,16 +12,6 @@ const ContactList = ({ contacts, onClick }) => {
               number={number}
               onClick={onClick}
             ></Contact>
-
-            /* <p className={s.contactText}>
-            <FaUser /> {name}
-          </p>
-          <p className={s.contactText}>
-            <FaPhoneAlt /> {number}
-          </p>
-          <button className={s.button} onClick={() => onClick(id)}>
-            Delete
-          </button> */
           }
         </li>
       ))}

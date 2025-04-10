@@ -31,7 +31,6 @@ const App = () => {
       )
     : contacts;
 
-  // спросить за эти строчки как сюда попадает новый контакт?
   const addContact = (newContact) => {
     setContacts([...contacts, newContact]);
   };
